@@ -1,4 +1,4 @@
-import { TaskStatus } from "../task.model";
+import { TaskStatus } from "../task-status.model";
 
 export class PatchTaskStatusDTO {
     id: string;
