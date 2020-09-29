@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { Task, TaskStatus } from './task.model';
-import { v4 as uuid }  from 'uuid'
+import { v4 as uuid }  from 'uuid';
 import { CreateTaskDTO } from './dto/create-task.dto';
 import { PatchTaskStatusDTO } from './dto/patch-task-status.dto';
+import { GetTasksFilterDTO } from './dto/get-tasks-filter.dto';
 
 @Injectable()
 export class TasksService {
@@ -12,9 +13,27 @@ export class TasksService {
         return this.tasks;
     };
 
+    getTasksWithFilters(filterDTO: GetTasksFilterDTO): Task[] {
+        const { status, search } = filterDTO;
+        let tasks = this.getAllTasks();
+
+        if (status) {
+            tasks = tasks.filter(t => t.status === status);
+        };
+
+        if (search) {
+            tasks = tasks.filter(t =>
+                t.title.includes(search) ||
+                t.description.includes(search)
+            );
+        };
+
+        return tasks;
+    };
+
     getTaskById(id: string): Task {
-        return this.tasks.find(t => t.id === id)
-    }
+        return this.tasks.find(t => t.id === id);
+    };
 
     createTask(createTaskDTO: CreateTaskDTO): Task {
         const { title, description } = createTaskDTO;
@@ -31,15 +50,15 @@ export class TasksService {
     };
 
     updateTaskStatus(patch: PatchTaskStatusDTO): Task {
-        const task = this.getTaskById(patch.id)
-        const index = this.tasks.indexOf(task)
+        const task = this.getTaskById(patch.id);
+        const index = this.tasks.indexOf(task);
 
-        this.tasks[index].status = patch.status
+        this.tasks[index].status = patch.status;
 
-        return this.tasks[index]
-    }
+        return this.tasks[index];
+    };
 
     deleteTask(id: string): void {
         this.tasks = this.tasks.filter(t => t.id !== id);
-    }
+    };
 }
