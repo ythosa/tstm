@@ -2,6 +2,7 @@ import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn, Unique }
 import * as bcrypt from "bcrypt";
 import { Task } from "src/tasks/task.entity";
 
+
 @Entity()
 @Unique(['username'])
 export class User extends BaseEntity {
