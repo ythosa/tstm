@@ -34,6 +34,49 @@
 $ npm install
 ```
 
+## Available scripts
+
+```bash
+# start application in development mode
+$ docker-compose -f docker-compose.yml -f docker-compose.development.yml up --build
+
+# build application
+$ docker-compose build
+
+# run application
+$ docker-compose up
+
+# run and build? application
+$ docker-compose up --build
+
+  
+
+# see api service logs
+$ docker logs tstm_api
+
+# see api database logs
+$ docker logs tstm_db 
+
+  
+
+# remove api container
+$ docker-compose rm api
+
+# remove auth db container (to clear database)
+$ docker-compose rm db
+
+  
+
+# get all volumes
+$ docker volume ls 
+
+# get all images
+$ docker images
+
+# get all working processes
+$ docker ps
+```
+
 ## Running the app
 
 ```bash
