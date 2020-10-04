@@ -1,6 +1,6 @@
 db:
-    host: 'localhost'
-    user: 'postgres'
+    host: 'api_db'
+    user: 'ythosa'
     password: 'ts1lovetan9'
     synchronize: true
 
