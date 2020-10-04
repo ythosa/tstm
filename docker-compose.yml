@@ -1,22 +1,37 @@
 version: '3'
 
 services:
-    api:
-        build: ./src
-        container_name: tstm-api
-        command: npm run start
-        restart: unless-stopped
-        environment: 
-            - API_PORT=3000
-            - DB_HOST=localhost
-            - DB_PORT=5432
-        depends_on: 
-            - db
-        networks: 
-            - tstm
+  api:
+    build: ./api
+    container_name: tstm-api
+    command: npm run start
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    environment: 
+      - NODE_ENV=DEVELOPMENT
+    env_file: 
+      - ./db/postgresql.env
+    depends_on: 
+      - api_db
+    networks: 
+      - tstm
 
-    db:
-        container_name: tstm-db
-        image: postgres:13.0-alpine
-        networks: 
-            - tstm
+  api_db:
+    container_name: tstm-db
+    image: postgres:13.0-alpine
+    env_file: 
+      - ./db/postgresql.env
+    volumes: 
+      - database-data:/var/lib/postgresql/data/
+    networks:
+      - tstm
+    ports: 
+      - "5433:5432"
+
+volumes:
+    database-data:
+
+networks: 
+  tstm:
+    driver: bridge
