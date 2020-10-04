@@ -38,7 +38,7 @@ $ npm install
 
 ```bash
 # start application in development mode
-$ docker-compose -f docker-compose.yml -f docker-compose.development.yml up --build
+$ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build
 
 # build application
 $ docker-compose build

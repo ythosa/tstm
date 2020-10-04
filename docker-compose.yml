@@ -9,12 +9,10 @@ services:
       - "3000:3000"
     restart: unless-stopped
     environment: 
-      - NODE_ENV=development
-    env_file: 
-      - ./db/postgresql.env
-    depends_on: 
+      - NODE_ENV=production
+    depends_on:
       - api_db
-    networks: 
+    networks:
       - tstm
 
   api_db:
@@ -23,14 +21,11 @@ services:
     env_file: 
       - ./db/postgresql.env
     volumes: 
-      - ./data/postgres:/var/lib/postgresql/data
+      - ./db/data/postgres:/var/lib/postgresql/data
     networks:
       - tstm
     ports: 
       - "5433:5433"
-
-#volumes:
-#    database-data:
 
 networks: 
   tstm:
