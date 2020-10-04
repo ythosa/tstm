@@ -2,7 +2,7 @@
 
 <h1> TSTM </h1>
   
-[![Badge](https://img.shields.io/badge/Uses-NestJS-red.svg?style=flat&logo=nestjs&logoWidth=15&logoColor=orange)](https://kotlinlang.org/)
+[![Badge](https://img.shields.io/badge/Uses-NestJS-red.svg?style=flat&logo=nestjs&logoWidth=15&logoColor=orange)](https://https://nestjs.com/)
 [![Badge](https://img.shields.io/badge/Made_with-Affection-ff69b4.svg?style=flat&logo=ko-fi&logoWidth=15&logoColor=ff69b4)](https://i.pinimg.com/736x/d7/5f/e3/d75fe32e7af10c3ed0bafb98816a6ce2.jpg)
 [![Badge](https://img.shields.io/badge/Open-Source-green.svg?style=flat&logo=open-source-initiative&logoWidth=15&logoColor=green)](https://ru.wikipedia.org/wiki/Open_source)
 
@@ -59,7 +59,7 @@ $ docker ps
 
 ## Support
 
-TSTM is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers.
+TSTM is an GPL-3.0 - licensed open source project. It can grow thanks to the sponsors and support by the amazing backers.
 
 ## Stay in touch
 
