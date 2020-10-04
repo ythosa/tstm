@@ -1,11 +1,17 @@
 <div align="center">
-  <h1> TSTM </h1>
+
+<h1> TSTM </h1>
+  
+[![Badge](https://img.shields.io/badge/Uses-NestJS-red.svg?style=flat&logo=nestjs&logoWidth=15&logoColor=orange)](https://kotlinlang.org/)
+[![Badge](https://img.shields.io/badge/Made_with-Affection-ff69b4.svg?style=flat&logo=ko-fi&logoWidth=15&logoColor=ff69b4)](https://i.pinimg.com/736x/d7/5f/e3/d75fe32e7af10c3ed0bafb98816a6ce2.jpg)
+[![Badge](https://img.shields.io/badge/Open-Source-green.svg?style=flat&logo=open-source-initiative&logoWidth=15&logoColor=green)](https://ru.wikipedia.org/wiki/Open_source)
+
 </div>
 
 
 ## Description
 
-TSTM is simple & useful task manager application 
+TSTM is simple & useful task manager application.
 
 ## Available scripts
 
@@ -61,4 +67,4 @@ TSTM is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## License
 
-- TSTM is [MIT licensed](LICENSE).
+- TSTM is [GPL-3.0 licensed](LICENSE).
