@@ -24,8 +24,8 @@ services:
       - ./db/data/postgres:/var/lib/postgresql/data
     networks:
       - tstm
-    ports: 
-      - "5433:5433"
+    # ports: 
+    #   - "5433:5433"
 
 networks: 
   tstm:
