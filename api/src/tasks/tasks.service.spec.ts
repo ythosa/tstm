@@ -1,5 +1,6 @@
 import { NotFoundException } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
+import { EPERM } from 'constants';
 import { CreateTaskDTO } from './dto/create-task.dto';
 import { GetTasksFilterDTO } from './dto/get-tasks-filter.dto';
 import { TaskStatus } from './task-status.model';
@@ -12,6 +13,7 @@ const mockTaskRepository = () => ({
     findOne: jest.fn(),
     createTask: jest.fn(),
     delete: jest.fn(),
+    update: jest.fn(),
 });
 
 const mockUser = {
@@ -113,5 +115,18 @@ describe('TasksService', () => {
 
             expect(tasksService.deleteTask(1, mockUser)).rejects.toThrow(NotFoundException);
         })
+    });
+
+    describe('updateTaskStatus', () => {
+        it('calls taskRepository.update()', async () => {            
+            const mockTask = { id: 1, status: TaskStatus.OPEN };
+            const mockTaskUpdate = { status: TaskStatus.DONE };
+
+            taskRepository.findOne.mockResolvedValue(mockTask);
+
+            const result = await tasksService.updateTaskStatus(mockTask.id, mockTaskUpdate.status, mockUser);
+            expect(taskRepository.update).toHaveBeenCalledWith(mockTask.id, {...mockTask, ...mockTaskUpdate });
+            expect(result).toEqual({ ...mockTask, ...mockTaskUpdate });
+        });
     });
 });
