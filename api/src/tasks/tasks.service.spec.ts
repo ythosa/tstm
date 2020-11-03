@@ -1,14 +1,16 @@
 import { NotFoundException } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import { async } from 'rxjs';
+import { CreateTaskDTO } from './dto/create-task.dto';
 import { GetTasksFilterDTO } from './dto/get-tasks-filter.dto';
 import { TaskStatus } from './task-status.model';
+import { Task } from './task.entity';
 import { TaskRepository } from './task.repository';
 import { TasksService } from './tasks.service';
 
 const mockTaskRepository = () => ({
     getTasks: jest.fn(),
     findOne: jest.fn(),
+    createTask: jest.fn(),
 });
 
 const mockUser = {
@@ -71,6 +73,22 @@ describe('TasksService', () => {
         it('throws an error as task is not found', async () => {
             taskRepository.findOne.mockResolvedValue(null);
             expect(tasksService.getTaskById(1, mockUser)).rejects.toThrow(NotFoundException);
+        });
+    });
+
+    describe('createTask', () => {
+        it('calls taskRepository.createTask() and returns the result', async () => {
+            expect(taskRepository.createTask).not.toHaveBeenCalled();
+
+            const createTaskDTO: CreateTaskDTO = {
+                title: 'Test task',
+                description: 'Test task descritption',
+            };
+
+            taskRepository.createTask.mockResolvedValue('super task');
+            const result = await tasksService.createTask(createTaskDTO, mockUser);
+            expect(taskRepository.createTask).toHaveBeenCalledWith(createTaskDTO, mockUser);
+            expect(result).toEqual('super task');
         });
     });
 });
